@@ -27,3 +27,9 @@ QLINKS_ADMIN_HOST = r'admin'
 
 # Set to link prefix for short links, e.g. 'https://short.example.com/'
 QLINKS_CANONICAL = None
+
+# If you are using a CDN, you can optionally configure it to cache all the
+# redirects, and then use a CDN cache backend to purge the cache.
+# QLINKS_CDN_CACHE = 'qlinks.cdn_cache.cloudflare_cache.CloudflareCDNCache'
+# QLINKS_CDN_CLOUDFLARE_API_TOKEN = ...
+# QLINKS_CDN_CLOUDFLARE_API_ZONE_ID = ...

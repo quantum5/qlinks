@@ -1,7 +1,11 @@
+from functools import cached_property
+
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+
+from qlinks.cdn_cache import cdn_cache
 
 
 class Link(models.Model):
@@ -18,3 +22,11 @@ class Link(models.Model):
 
     def __str__(self):
         return self.short or '/'
+
+    @cached_property
+    def short_url(self):
+        return settings.QLINKS_CANONICAL + self.short
+
+    def purge_cdn(self):
+        if cdn_cache:
+            cdn_cache.purge(self.short_url)

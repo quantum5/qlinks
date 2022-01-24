@@ -86,3 +86,4 @@ QLINKS_CANONICAL = None
 QLINKS_SITE_HEADER = 'QLinks Admin'
 QLINKS_SITE_TITLE = 'QLinks Admin'
 QLINKS_INDEX_TITLE = 'Welcome to the QLinks admin interface!'
+QLINKS_CDN_CACHE = None

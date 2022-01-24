@@ -17,17 +17,17 @@ class LinkAdmin(admin.ModelAdmin):
     search_fields = ('short', 'long')
 
     @admin.display(ordering='short', description=_('short slug'))
-    def short_slug(self, obj):
+    def short_slug(self, obj: Link):
         return obj.short or '/'
 
     @admin.display(ordering='long', description=_('long URL'))
-    def long_url(self, obj):
+    def long_url(self, obj: Link):
         return format_html('<a href="{0}">{1}</a>', obj.long, truncatechars(obj.long, 64))
 
     @admin.display(description=_('link'))
-    def short_url(self, obj):
+    def short_url(self, obj: Link):
         if settings.QLINKS_CANONICAL:
-            return format_html('<a href="{0}{1}">{2}</a>', settings.QLINKS_CANONICAL, obj.short, gettext('Link'))
+            return format_html('<a href="{0}">{1}</a>', obj.short_url, gettext('Link'))
 
     def save_model(self, request, obj: Link, form, change):
         obj.created_by = request.user
@@ -35,6 +35,11 @@ class LinkAdmin(admin.ModelAdmin):
         obj.is_working = check_url(obj.long)
         obj.last_check = timezone.now()
         super().save_model(request, obj, form, change)
+        obj.purge_cdn()
+
+    def delete_model(self, request, obj: Link):
+        super().delete_model(request, obj)
+        obj.purge_cdn()
 
 
 admin.site.register(Link, LinkAdmin)
