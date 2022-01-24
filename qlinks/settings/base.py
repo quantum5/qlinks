@@ -83,3 +83,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Default qlinks config
 QLINKS_ADMIN_HOST = r'admin'
 QLINKS_CANONICAL = None
+QLINKS_SITE_HEADER = 'QLinks Admin'
+QLINKS_SITE_TITLE = 'QLinks Admin'
+QLINKS_INDEX_TITLE = 'Welcome to the QLinks admin interface!'

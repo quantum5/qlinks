@@ -38,3 +38,13 @@ class LinkAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Link, LinkAdmin)
+
+if settings.QLINKS_SITE_HEADER:
+    admin.site.site_header = settings.QLINKS_SITE_HEADER
+
+if settings.QLINKS_SITE_TITLE:
+    admin.site.site_title = settings.QLINKS_SITE_TITLE
+
+if settings.QLINKS_INDEX_TITLE:
+    admin.site.index_title = settings.QLINKS_INDEX_TITLE
+
