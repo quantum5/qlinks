@@ -17,4 +17,4 @@ class Link(models.Model):
     last_check = models.DateTimeField(verbose_name=_('last time URL was checked'))
 
     def __str__(self):
-        return self.short
+        return self.short or '/'

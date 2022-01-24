@@ -12,9 +12,13 @@ from qlinks.models import Link
 class LinkAdmin(admin.ModelAdmin):
     fields = ('short', 'long', 'created_by', 'created_on', 'updated_on', 'is_working', 'last_check')
     readonly_fields = ('created_by', 'created_on', 'updated_on', 'is_working', 'last_check')
-    list_display = ('short', 'long_url', 'created_by', 'created_on', 'updated_on', 'is_working', 'last_check', 'short_url')
+    list_display = ('short_slug', 'long_url', 'created_by', 'created_on', 'updated_on', 'is_working', 'last_check', 'short_url')
     list_filter = ('created_by', 'is_working', 'created_on', 'updated_on')
     search_fields = ('short', 'long')
+
+    @admin.display(ordering='short', description=_('short slug'))
+    def short_slug(self, obj):
+        return obj.short or '/'
 
     @admin.display(ordering='long', description=_('long URL'))
     def long_url(self, obj):
