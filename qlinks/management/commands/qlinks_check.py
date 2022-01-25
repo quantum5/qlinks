@@ -51,6 +51,7 @@ class Command(BaseCommand):
             link.check_url()
             if was_working and not link.is_working:
                 self.stdout.write(f'URL for {link.short} just broke: {link.long}')
-                send_broken_email(link)
+                if settings.QLINKS_BROKEN_EMAIL:
+                    send_broken_email(link)
 
             time.sleep(settings.QLINKS_CHECK_THROTTLE)
