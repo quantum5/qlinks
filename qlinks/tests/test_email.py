@@ -1,12 +1,16 @@
 from django.contrib.auth.models import User
 from django.core import mail
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 
 from qlinks.email import send_broken_email
 from qlinks.models import Link
 
 
+@override_settings(
+    QLINKS_CANONICAL='https://short.example/',
+    QLINKS_BROKEN_EMAIL=True,
+)
 class EmailTest(TestCase):
     def create_link(self, user) -> Link:
         return Link.objects.create(
