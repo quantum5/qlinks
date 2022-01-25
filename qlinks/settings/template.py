@@ -25,7 +25,10 @@ STATIC_ROOT = '/srv/example'
 # Email
 # https://docs.djangoproject.com/en/4.0/topics/email/#email-backends
 # The email all broken links notifications will come from, among other things.
-# DEFAULT_FROM_MAIL = 'qlinks@example.com'
+# DEFAULT_FROM_EMAIL = 'qlinks@example.com'
+
+# Emails that Django errors will come from.
+# SERVER_EMAIL = 'qlinks@example.com'
 
 # A tuple of (name, email) pairs that specifies those who will be mailed
 # when the server experiences an error when DEBUG = False.
