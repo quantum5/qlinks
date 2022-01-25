@@ -6,6 +6,7 @@ from django.core.management import BaseCommand
 from django.db.models import Min
 from django.utils import timezone
 
+from qlinks.email import send_broken_email
 from qlinks.models import Link
 
 logger = logging.getLogger('qlinks.checker')
@@ -50,5 +51,6 @@ class Command(BaseCommand):
             link.check_url()
             if was_working and not link.is_working:
                 self.stdout.write(f'URL for {link.short} just broke: {link.long}')
+                send_broken_email(link)
 
             time.sleep(settings.QLINKS_CHECK_THROTTLE)

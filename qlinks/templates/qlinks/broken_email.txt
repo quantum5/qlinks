@@ -1,0 +1,8 @@
+{% load i18n %}{% blocktranslate %}Dear {{ name }},{% endblocktranslate %}
+
+{% translate "QLinks has found a broken link:" %}
+
+* {% translate "short link" %}:  {{ link.short_url }}
+* {% translate "destination" %}: {{ link.long }}
+
+{% translate "Please log onto the admin site and fix this." %}
