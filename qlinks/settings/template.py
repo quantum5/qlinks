@@ -33,3 +33,12 @@ QLINKS_CANONICAL = None
 # QLINKS_CDN_CACHE = 'qlinks.cdn_cache.cloudflare_cache.CloudflareCDNCache'
 # QLINKS_CDN_CLOUDFLARE_API_TOKEN = ...
 # QLINKS_CDN_CLOUDFLARE_API_ZONE_ID = ...
+
+# Automatic link checking settings.
+# Minimum and maximum time before next check.
+# A time is randomly chosen to spread out the load.
+# QLINKS_CHECK_MIN = timedelta(days=6)
+# QLINKS_CHECK_MAX = timedelta(days=8)
+
+# Minimum time in seconds between two consecutive checks.
+# QLINKS_CHECK_THROTTLE = 1

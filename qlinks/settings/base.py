@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -87,3 +88,6 @@ QLINKS_SITE_HEADER = 'QLinks Admin'
 QLINKS_SITE_TITLE = 'QLinks Admin'
 QLINKS_INDEX_TITLE = 'Welcome to the QLinks admin interface!'
 QLINKS_CDN_CACHE = None
+QLINKS_CHECK_MIN = timedelta(days=6)
+QLINKS_CHECK_MAX = timedelta(days=8)
+QLINKS_CHECK_THROTTLE = 1

@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.utils.html import format_html
 from django.utils.translation import gettext, gettext_lazy as _
 
-from qlinks.health import check_url
 from qlinks.models import Link
 
 
@@ -32,8 +31,7 @@ class LinkAdmin(admin.ModelAdmin):
     def save_model(self, request, obj: Link, form, change):
         obj.created_by = request.user
         obj.updated_on = timezone.now()
-        obj.is_working = check_url(obj.long)
-        obj.last_check = timezone.now()
+        obj.check_url(save=False)
         super().save_model(request, obj, form, change)
         obj.purge_cdn()
 
@@ -52,4 +50,3 @@ if settings.QLINKS_SITE_TITLE:
 
 if settings.QLINKS_INDEX_TITLE:
     admin.site.index_title = settings.QLINKS_INDEX_TITLE
-
