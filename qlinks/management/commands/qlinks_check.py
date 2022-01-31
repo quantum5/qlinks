@@ -36,7 +36,7 @@ class Command(BaseCommand):
             self.check_links()
 
             next_check = Link.objects.aggregate(min=Min('next_check'))['min']
-            wait = (next_check - timezone.now()).total_seconds()
+            wait = (next_check - timezone.now() if next_check else settings.QLINKS_CHECK_MIN).total_seconds()
             if wait > 0:
                 if self.verbosity > 2:
                     self.stdout.write(f'Sleeping for: {wait:.0f} seconds')
