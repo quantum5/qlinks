@@ -92,3 +92,4 @@ QLINKS_CHECK_MIN = timedelta(days=6)
 QLINKS_CHECK_MAX = timedelta(days=8)
 QLINKS_CHECK_THROTTLE = 1
 QLINKS_BROKEN_EMAIL = False
+QLINKS_POWERED_BY = 'QLinks <https://github.com/quantum5/qlinks>'

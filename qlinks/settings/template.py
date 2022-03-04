@@ -77,3 +77,7 @@ QLINKS_CANONICAL = None
 
 # Enable emails.
 # QLINKS_BROKEN_EMAIL = True
+
+# Update the X-Powered-By header to point to your fork if you are not running
+# upstream code. This is required to comply with AGPLv3.
+# QLINKS_POWERED_BY = 'QLinks <https://github.com/YOU/qlinks>'
