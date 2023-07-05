@@ -2,7 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.forms import SlugField
 
-URL_SLUG_VALIDATOR = RegexValidator(r'^[-a-zA-Z0-9_/]+\Z')
+URL_SLUG_VALIDATOR = RegexValidator(r'^[-a-zA-Z0-9_/._~!$^\'()*+,;=:@]+\Z')
 
 
 class ShortURLFormField(SlugField):
