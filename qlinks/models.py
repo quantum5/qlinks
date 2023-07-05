@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from qlinks.cdn_cache import cdn_cache
+from qlinks.fields import ShortURLField
 from qlinks.health import check_url
 
 
@@ -18,9 +19,9 @@ def compute_next_check():
 
 
 class Link(models.Model):
-    short = models.SlugField(max_length=64, verbose_name=_('short link slug'), unique=True, blank=True,
-                             help_text=_('the part of URL after / that will redirect to the long URL, '
-                                         'e.g. https://my.short.link/[slug]'))
+    short = ShortURLField(max_length=64, verbose_name=_('short link slug'), unique=True, blank=True,
+                          help_text=_('the part of URL after / that will redirect to the long URL, '
+                                      'e.g. https://my.short.link/[slug]'))
     long = models.URLField(max_length=512, verbose_name=_('long URL'))
     created_on = models.DateTimeField(verbose_name=_('creation time'), auto_now_add=True)
     updated_on = models.DateTimeField(verbose_name=_('last update'), default=timezone.now)
