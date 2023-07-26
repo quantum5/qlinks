@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.core.mail import send_mail
-from django.template import Context
 from django.template.loader import get_template
 from django.utils.translation import gettext as _
 
