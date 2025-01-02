@@ -1,3 +1,4 @@
 Django>=4.2,<5
 django-hosts
 requests
+cloudflare
