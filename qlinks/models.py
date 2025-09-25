@@ -15,7 +15,7 @@ from qlinks.health import check_url
 def compute_next_check():
     min_check = settings.QLINKS_CHECK_MIN.total_seconds()
     max_check = settings.QLINKS_CHECK_MAX.total_seconds()
-    return timezone.now() + timedelta(seconds=random.randint(min_check, max_check))
+    return timezone.now() + timedelta(seconds=random.uniform(min_check, max_check))
 
 
 class Link(models.Model):
